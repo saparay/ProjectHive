@@ -5465,11 +5465,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\sapar\\source\\repos\\ProjectHive.API\\ProjectHive.API\\ProjectHive.API.csproj",
+      "projectUniqueName": "C:\\Users\\sapar\\Repositories\\ProjectHive\\ProjectHive.API\\ProjectHive.API\\ProjectHive.API.csproj",
       "projectName": "ProjectHive.API",
-      "projectPath": "C:\\Users\\sapar\\source\\repos\\ProjectHive.API\\ProjectHive.API\\ProjectHive.API.csproj",
+      "projectPath": "C:\\Users\\sapar\\Repositories\\ProjectHive\\ProjectHive.API\\ProjectHive.API\\ProjectHive.API.csproj",
       "packagesPath": "C:\\Users\\sapar\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\sapar\\source\\repos\\ProjectHive.API\\ProjectHive.API\\obj\\",
+      "outputPath": "C:\\Users\\sapar\\Repositories\\ProjectHive\\ProjectHive.API\\ProjectHive.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\sapar\\AppData\\Roaming\\NuGet\\NuGet.Config",
