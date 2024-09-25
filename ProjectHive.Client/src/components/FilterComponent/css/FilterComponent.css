@@ -29,7 +29,8 @@
   }
   
   .filter-go-button, 
-  .filter-reset-button {
+  .filter-reset-button, 
+  .filter-excel-button {
     padding: 8px 16px;
     border: none;
     border-radius: 4px;
@@ -55,5 +56,11 @@
   
   .filter-dropdown-option {
     padding: 10px;
+  }
+  .filter-excel-button{
+    background-color: green;
+  }
+  .filter-excel-button:hover{
+    background-color: rgb(3, 105, 3);
   }
   

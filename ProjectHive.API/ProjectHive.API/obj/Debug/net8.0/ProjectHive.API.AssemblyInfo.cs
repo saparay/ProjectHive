@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ProjectHive.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9c7e4db86016fc4e2d10a6e2572aea77aa3c0729")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b3366cd393cebf3dd97630002ba858f8943361be")]
 [assembly: System.Reflection.AssemblyProductAttribute("ProjectHive.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ProjectHive.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

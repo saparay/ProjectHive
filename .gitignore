@@ -2,5 +2,5 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/ProjectHive.API/ProjectHive.API/ProjectHive.API.csproj
+
 /ProjectHive.API/ProjectHive.API/appsettings.json

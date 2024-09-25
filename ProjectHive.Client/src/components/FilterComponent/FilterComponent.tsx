@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import './css/FilterComponent.css';
-import { RetriveAllAccount, RetriveAllGeographyLocation, RetriveAllStatus, RetriveAllVertical } from '../../services/ApiService';
+import { ExportToExcel, RetriveAllAccount, RetriveAllGeographyLocation, RetriveAllStatus, RetriveAllVertical } from '../../services/ApiService';
 import { AccountList } from '../../Models/AccountListModel';
 import FilterDropdown from './FilterDropdown';
 import { VerticalList } from '../../Models/VerticalListModel';
@@ -14,7 +14,7 @@ export default function FilterComponent(){
     const [ verticalList, setVerticalList ] = useState<VerticalList[]>([]);
     const [ statusList, setStatusList ] = useState<StatusList[]>([]);
     const [ geographyLocation, setGeographyLocation ] = useState<GeographyLocation[]>([]);
-    const { filterDataRequestBody, setFilterDataRequestBody } =  useSharedFilterRequestBody();
+    const { setFilterDataRequestBody } =  useSharedFilterRequestBody();
 
     useEffect(() => {
         RetriveAllAccount().then(response => {
@@ -43,6 +43,7 @@ export default function FilterComponent(){
                     <FilterDropdown dropdownList={geographyLocation} dropdownPlaceholder = 'Geography Location'/>
                     <button className="filter-reset-button" onClick={() => setFilterDataRequestBody({})}>Reset</button>
                     <button className="filter-go-button">Create Project Tracker</button>
+                    <button className="filter-excel-button" onClick={() => ExportToExcel()}>Export To Excel</button>
                 </div>
             </div>
         </>

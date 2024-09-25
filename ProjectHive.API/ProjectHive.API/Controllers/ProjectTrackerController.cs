@@ -18,11 +18,6 @@ namespace ProjectHive.API.Controllers
             _projectTrackerService = projectTrackerService;
         }
 
-        //[HttpGet]
-        //public Task<List<ProjectTrackerDto>> GetAllProjectTrackers()
-        //{
-        //    return _projectTrackerService.GetAllProjectTrackers();
-        //}
 
         [HttpPost]
         public IActionResult GetPaginatedProjectTrackers([FromBody] ProjectTrackerRequestBodyDto? requestBodyDto, int page=1, int pageSize=8)
@@ -64,12 +59,6 @@ namespace ProjectHive.API.Controllers
             var stream = _projectTrackerService.ExportDataToExcel().Result;
             var fileName = $"ProjectTracker_{DateTime.Now:yyyyMMddHHmmss}.xlsx";
             return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileName);
-        }
-
-        [HttpGet("demo")]
-        public List<ProjectTrackerViewEx> GetProjectTrackersView()
-        {
-            return _projectTrackerService.GetProjects();
         }
     }
 }

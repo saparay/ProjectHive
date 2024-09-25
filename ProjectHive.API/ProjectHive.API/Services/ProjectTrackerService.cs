@@ -1,12 +1,10 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
+using ClosedXML.Excel;
 using Microsoft.EntityFrameworkCore;
-using OfficeOpenXml;
 using ProjectHive.API.Data;
 using ProjectHive.API.Models;
 using ProjectHive.API.Models.DTO;
-using System.Linq;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using System.Data;
 
 namespace ProjectHive.API.Services
 {
@@ -101,106 +99,53 @@ namespace ProjectHive.API.Services
             return _mapper.Map<List<ProjectTrackerDto>>(projectTrackerQueryable.ToList());
         }
 
-        public async Task<MemoryStream> ExportDataToExcel()
+        public async Task<byte[]?> ExportDataToExcel()
         {
-            var columnNames = await GetColumnNamesFromView("projecttrackerdemo");
 
-            //var data = await _projectHiveDbContext.ProjectTrackerViewEx.ToListAsync();
-
-            //var stream = new MemoryStream();
-
-            //Console.WriteLine("columnNames", columnNames);
-            //using (var package = new ExcelPackage(stream)) 
-            //{
-            //    var worksheet = package.Workbook.Worksheets.Add("ProjectTracker");
-
-            //    for (int colIndex = 0; colIndex < columnNames.Count; colIndex++)
-            //    {
-            //        worksheet.Cells[1, colIndex+1].Value = columnNames[colIndex];
-
-            //    }
-
-            //    for(int rowIndex = 0; rowIndex < data.Count; rowIndex++)
-            //    {
-            //        var row = data[rowIndex];
-            //        for(int colIndex = 0; colIndex<columnNames.Count; colIndex++)
-            //        {
-            //            var propertyName = columnNames[colIndex];
-            //            var propertyValue = row.GetType().GetProperty(propertyName)?.GetValue(row, null);
-            //            worksheet.Cells[rowIndex+2, colIndex+1].Value = propertyValue?.ToString();
-            //        }
-            //    }
-            //    package.Save();
-            //}
-            //stream.Position = 0;
             var data = await _projectHiveDbContext.ProjectTrackerViewEx.ToListAsync();
 
-            // Create Excel file
-            var stream = new MemoryStream();
-            using (var package = new ExcelPackage(stream))
+            if (data == null || !data.Any())
+                return null;
+
+            // Create a DataTable to hold your data
+            var dt = new DataTable("Projects");
+
+            // Get the properties of your entity (assuming all properties should be included)
+            var properties = typeof(ProjectTrackerViewEx).GetProperties();
+
+            // Dynamically create columns based on the property names
+            foreach (var prop in properties)
             {
-                var worksheet = package.Workbook.Worksheets.Add("Data");
-
-                // Add headers (assuming your SQL view has columns `Column1`, `Column2`, etc.)
-                worksheet.Cells[1, 1].Value = "Column1";
-                worksheet.Cells[1, 2].Value = "Column2";
-                worksheet.Cells[1, 3].Value = "Column3";
-                // Add more headers if needed
-
-                // Add data to cells (assuming your SQL view returns a list of entities)
-                for (int i = 0; i < data.Count; i++)
-                {
-                    worksheet.Cells[i + 2, 1].Value = data[i].Project_Id;
-                    worksheet.Cells[i + 2, 2].Value = data[i].Project_Name;
-                    worksheet.Cells[i + 2, 3].Value = data[i].Project_Description;
-                    // Add more columns if needed
-                }
-
-                package.Save();
+                dt.Columns.Add(prop.Name);
             }
 
-            stream.Position = 0;
-            var fileName = $"Data_{DateTime.Now:yyyyMMddHHmmss}.xlsx";
-
-            // Return the Excel file for download
-            //return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileName);
-            return stream;
-
-
-        }
-        private async Task<List<string>> GetColumnNamesFromView(string viewName)
-        {
-            var columnNames = new List<string>();
-
-            using (var command = _projectHiveDbContext.Database.GetDbConnection().CreateCommand())
+            // Populate DataTable with your data
+            foreach (var item in data)
             {
-                command.CommandText = @"
-                SELECT COLUMN_NAME
-                FROM INFORMATION_SCHEMA.COLUMNS
-                WHERE TABLE_NAME = 'projecttrackerview'";
-
-                // Add parameter to prevent SQL injection
-                var parameter = command.CreateParameter();
-                parameter.ParameterName = "projecttrackerview";
-                parameter.Value = viewName;
-                command.Parameters.Add(parameter);
-
-                _projectHiveDbContext.Database.OpenConnection();
-                using (var result = await command.ExecuteReaderAsync())
+                var values = new object[properties.Length];
+                for (int i = 0; i < properties.Length; i++)
                 {
-                    while (await result.ReadAsync())
-                    {
-                        columnNames.Add(result.GetString(0));
-                    }
+                    values[i] = properties[i].GetValue(item) ?? DBNull.Value; // Handles null values
+                }
+                dt.Rows.Add(values);
+            }
+
+            // Create an Excel file with ClosedXML
+            using (var workbook = new XLWorkbook())
+            {
+                var worksheet = workbook.Worksheets.Add(dt);
+
+                using (var stream = new MemoryStream())
+                {
+                    workbook.SaveAs(stream);
+                    var content = stream.ToArray();
+
+                    // Return the Excel file
+                    return content;
                 }
             }
-            Console.WriteLine("columnNames", columnNames);
-            return columnNames;
-        }
 
-        public List<ProjectTrackerViewEx> GetProjects()
-        {
-            return _projectHiveDbContext.ProjectTrackerViewEx.ToList();
+
         }
     }
 }
