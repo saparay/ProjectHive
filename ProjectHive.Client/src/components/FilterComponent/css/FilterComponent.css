@@ -1,0 +1,59 @@
+.filter-container {
+    width: 90%;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+  }
+  
+  .filter-header {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+  
+  .filter-dropdown-container {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .filter-list-dropdown {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .filter-go-button, 
+  .filter-reset-button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .filter-go-button {
+    background-color: #4CAF50;
+  }
+  
+  .filter-go-button:hover {
+    background-color: #45a049;
+  }
+  
+  .filter-reset-button {
+    background-color: #f44336;
+  }
+  
+  .filter-reset-button:hover {
+    background-color: #e53935;
+  }
+  
+  .filter-dropdown-option {
+    padding: 10px;
+  }
+  

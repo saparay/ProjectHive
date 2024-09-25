@@ -1,0 +1,30 @@
+.table-container {
+    display: table;
+    width: 99.9%;
+    border-collapse: collapse;
+  }
+  
+  .table-header-row, .table-body-row {
+    display: table-row;
+  }
+  
+  .table-header-column, .table-body-column {
+    white-space: nowrap;
+    display: table-cell;
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .table-header-row {
+    background-color: #3c9cdb;
+    font-weight: bold;
+  }
+  
+  
+  .table-container .table-header-column, 
+  .table-container .table-body-column {
+    width: 16.6%;
+  }
+  
+  

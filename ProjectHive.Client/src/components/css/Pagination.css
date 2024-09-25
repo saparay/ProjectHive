@@ -1,0 +1,32 @@
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* Adds space between buttons and page number */
+    margin-top: 20px;
+  }
+  
+  .previous-page-button, 
+  .next-page-button {
+    padding: 8px 16px;
+    background-color: #34c7dd;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .previous-page-button:hover, 
+  .next-page-button:hover {
+    background-color: #1f7d8b;
+  }
+  
+  .current-page-number {
+    font-size: 16px;
+    font-weight: bold;
+    padding: 8px 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
