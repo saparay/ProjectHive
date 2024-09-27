@@ -1,14 +1,18 @@
 import axios from "axios";
 import { FilterDataRequestBody } from "../Models/ProjectTrackerModel";
 
-export const BaseUrl = "https://localhost:7032/api";
+export const BaseUrl = "http://localhost:5205/api";
 
 // const { searchText } = useSharedSearchText();
 
 export async function RetriveAllProjects(
   filterRequestBody?: FilterDataRequestBody
 ) {
-  return await axios.post(`${BaseUrl}/ProjectTracker`, filterRequestBody);
+  console.log('filterRequestBody?.page', filterRequestBody?.page)
+  return await axios.post(
+    `${BaseUrl}/ProjectTracker?page=${filterRequestBody?.page}&pageSize=${filterRequestBody?.pageSize}`,
+    filterRequestBody?.body
+  );
 }
 export async function ExportToExcel() {
   try {
@@ -20,7 +24,7 @@ export async function ExportToExcel() {
     });
     const contentDisposition = response.headers["content-disposition"];
     console.log(contentDisposition);
-    const filename = getDynamicFilename(); 
+    const filename = getDynamicFilename();
     // Create a URL for the Blob file and download it
     const fileURL = window.URL.createObjectURL(new Blob([response.data]));
     const link = document.createElement("a");
@@ -49,9 +53,8 @@ export async function RetriveAllGeographyLocation() {
   return await axios.get(`${BaseUrl}/GeographyLocation`);
 }
 
-
 const getDynamicFilename = () => {
-    const now = new Date();
-    const timestamp = now.toISOString().slice(0, 19).replace(/:/g, "-");
-    return `ProjectData_${timestamp}.xlsx`; // Filename with a timestamp
-  };
+  const now = new Date();
+  const timestamp = now.toISOString().slice(0, 19).replace(/:/g, "-");
+  return `ProjectData_${timestamp}.xlsx`; // Filename with a timestamp
+};

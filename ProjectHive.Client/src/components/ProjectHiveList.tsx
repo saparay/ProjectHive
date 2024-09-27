@@ -6,6 +6,7 @@ import { useSharedFilterRequestBody } from "../services/CustomSharedStates";
 import { useNavigate } from "react-router-dom";
 import Loader from "./Header/Loader";
 import ErrprPage from "./ErrorPage";
+import Pagination from "./Pagination";
 
 export default function ProjectHiveList() {
   const navigate = useNavigate();
@@ -76,6 +77,10 @@ export default function ProjectHiveList() {
           );
         })}
       </div>
+      <Pagination
+        isNextDisabled={!projectTracker?.hasNext}
+        isPrevDisabled={projectTracker?.previous === null}
+      />
     </>
   );
 }

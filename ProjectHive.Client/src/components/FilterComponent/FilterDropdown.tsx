@@ -19,19 +19,31 @@ export default function FilterDropdown(props: FilterDropdownProps) {
     onChange={(e) => {
       if(props.dropdownPlaceholder === 'Account List') setFilterDataRequestBody(prev => ({
         ...prev,
-        accountList: [parseInt(e.target.value)]
+        body: {
+          ...prev.body, 
+          accountList: [parseInt(e.target.value)] 
+        }
       }))
       if(props.dropdownPlaceholder === 'Vertical List') setFilterDataRequestBody(prev => ({
         ...prev,
+        body: {
+          ...prev.body, 
         verticalList: [parseInt(e.target.value)]
+        }
       }))
       if(props.dropdownPlaceholder === 'Status List') setFilterDataRequestBody(prev => ({
         ...prev,
+        body: {
+          ...prev.body, 
         statusList: [parseInt(e.target.value)]
+        }
       }))
       if(props.dropdownPlaceholder === 'Geography Location') setFilterDataRequestBody(prev => ({
         ...prev,
+        body: {
+          ...prev.body, 
         geographyLocation: [parseInt(e.target.value)]
+        }
       }))
     }}
     >

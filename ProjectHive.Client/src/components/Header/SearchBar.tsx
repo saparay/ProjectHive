@@ -11,7 +11,13 @@ export default function SearchBar() {
         style={{ alignContent: "flex-end" }}
       >
         <div className="nav-bar-search-bar">
-          <button disabled style={{borderRadius: '5px 0px 0px 5px', backgroundColor: "white"}}>
+          <button
+            disabled
+            style={{
+              borderRadius: "5px 0px 0px 5px",
+              backgroundColor: "white",
+            }}
+          >
             <img style={{ maxHeight: "20px" }} src={SearchButtonIcon} alt="" />
           </button>
           <input
@@ -20,11 +26,14 @@ export default function SearchBar() {
             placeholder="sreach projects..."
             name="search"
             id="search-bar"
-            value={filterDataRequestBody.searchText || ""}
+            value={filterDataRequestBody?.body?.searchText || ""}
             onChange={(e) =>
               setFilterDataRequestBody((prev) => ({
                 ...prev,
-                searchText: e.target.value,
+                body: {
+                  ...prev.body,
+                  searchText: e.target.value,
+                },
               }))
             }
           />

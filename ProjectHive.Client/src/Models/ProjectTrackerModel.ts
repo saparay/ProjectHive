@@ -43,7 +43,7 @@ export interface ProjectTrackerDetail {
   geographyLocations: GeographyLocation[];
 }
 
-export interface ProjectTrackerList{
+export interface ProjectTrackerList {
   id: number;
   projectId: string;
   projectName: string;
@@ -53,18 +53,21 @@ export interface ProjectTrackerList{
   submissionDate: string;
 }
 export interface ProjectHiveListResponse {
-    data: ProjectTrackerList[]
-    next: string;
-    hasNaxt: boolean;
-    previous: string;
-    totalCount: number;
+  data: ProjectTrackerList[];
+  next: string;
+  hasNext: boolean;
+  previous: string;
+  totalCount: number;
 }
 
-
 export interface FilterDataRequestBody {
-  searchText?: string;
-  accountList?: number[];
-  statusList?: number[];
-  verticalList?: number[];
-  geographyLocation?: number[];
+  body?: {
+    searchText?: string;
+    accountList?: number[];
+    statusList?: number[];
+    verticalList?: number[];
+    geographyLocation?: number[];
+  };
+  pageSize: number;
+  page: number;
 }

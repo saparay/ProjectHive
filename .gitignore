@@ -3,4 +3,29 @@
 ################################################################################
 
 
-/ProjectHive.API/ProjectHive.API/appsettings.json
+ProjectHive.API/ProjectHive.API/appsettings.json
+ProjectHive.API/ProjectHive.API/obj/project.assets.json
+ProjectHive.API/ProjectHive.API/obj/project.nuget.cache
+ProjectHive.API/ProjectHive.API/obj/ProjectHive.API.csproj.nuget.dgspec.json
+ProjectHive.API/ProjectHive.API/obj/Debug/net8.0/ProjectHive.API.AssemblyInfo.cs
+ProjectHive.API/ProjectHive.API/obj/Debug/net8.0/ProjectHive.API.AssemblyInfoInputs.cache
+ProjectHive.API/ProjectHive.API/bin/*
+ProjectHive.API/.vs/*
+
+ProjectHive.API/.vscode/launch.json
+ProjectHive.API/.vscode/tasks.json
+ProjectHive.API/ProjectHive.API/bin/Debug/net8.0/ProjectHive.API.dll
+ProjectHive.API/ProjectHive.API/bin/Debug/net8.0/ProjectHive.API.exe
+ProjectHive.API/ProjectHive.API/bin/Debug/net8.0/ProjectHive.API.pdb
+ProjectHive.API/ProjectHive.API/obj/project.assets.json
+ProjectHive.API/ProjectHive.API/obj/project.nuget.cache
+ProjectHive.API/ProjectHive.API/obj/ProjectHive.API.csproj.nuget.dgspec.json
+ProjectHive.API/ProjectHive.API/obj/Debug/net8.0/apphost.exe
+ProjectHive.API/ProjectHive.API/obj/Debug/net8.0/ProjectHive.API.AssemblyInfo.cs
+ProjectHive.API/ProjectHive.API/obj/Debug/net8.0/ProjectHive.API.AssemblyInfoInputs.cache
+ProjectHive.API/ProjectHive.API/obj/Debug/net8.0/ProjectHive.API.dll
+ProjectHive.API/ProjectHive.API/obj/Debug/net8.0/ProjectHive.API.MvcApplicationPartsAssemblyInfo.cs
+ProjectHive.API/ProjectHive.API/obj/Debug/net8.0/ProjectHive.API.pdb
+ProjectHive.API/ProjectHive.API/obj/Debug/net8.0/ProjectHive.API.sourcelink.json
+ProjectHive.API/ProjectHive.API/obj/Debug/net8.0/ref/ProjectHive.API.dll
+ProjectHive.API/ProjectHive.API/obj/Debug/net8.0/refint/ProjectHive.API.dll

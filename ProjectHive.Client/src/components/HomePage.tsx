@@ -1,6 +1,4 @@
 import FilterComponent from "./FilterComponent/FilterComponent";
-import Header from "./Header";
-import Pagination from "./Pagination";
 import ProjectHiveList from "./ProjectHiveList";
 
 export default function HomePage() {
@@ -8,7 +6,6 @@ export default function HomePage() {
     <>
       <FilterComponent />
       <ProjectHiveList />
-      <Pagination />
     </>
   );
 }
